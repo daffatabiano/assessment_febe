@@ -30,14 +30,14 @@ export default function Navbar() {
       <div className="w-full px-2 flex justify-between items-center">
         <div className="w-full md:w-1/3 flex items-center">
           <img
-            src={'/logo.svg'}
+            src={'/logo.png'}
             alt="logo-navbar"
-            className="md:w-20 md:h-20 w-10 h-10 object-cover"
+            className="md:w-16 md:h-16 w-10 h-10 object-cover"
           />
-          <h1 className="text-md md:text-2xl flex w-full bg-rose-100 font-bold text-zinc-700 dark:text-white">
-            Daffa Tabiano |{' '}
-            <span className="text-zinc-500 dark:text-zinc-300">
-              FE Developer
+          <h1 className="text-md font-semibold ms-2 md:text-2xl flex w-fullfont-bold text-zinc-700 dark:text-white">
+            Daffa Tabiano{' '}
+            <span className="ps-2 text-zinc-400 dark:text-zinc-300">
+              | FE Developer
             </span>{' '}
           </h1>
         </div>
