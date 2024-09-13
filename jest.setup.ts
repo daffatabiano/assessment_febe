@@ -1,3 +1,1 @@
-// setupTests.js
-// Konfigurasi tambahan sebelum menjalankan tes, misal:
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
