@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { logo } from '../assets';
 import { navLinks } from '@/constants';
+import { logo } from '../assets';
 
 export default function Navbar() {
   const [scrollY, setScrollY] = useState<boolean>(false);
@@ -31,11 +31,11 @@ export default function Navbar() {
       <div className="w-full flex justify-between items-center">
         <div className="w-1/3 flex items-center">
           <img
-            src={logo}
+            src={'/logo.svg'}
             alt="logo-navbar"
             className="w-20 h-20 object-cover"
           />
-          <h1 className="text-xl md:text-3xl font-bold text-zinc-700 dark:text-white">
+          <h1 className="text-xl md:text-2xl font-bold text-zinc-700 dark:text-white">
             Daffa Tabiano |{' '}
             <span className="text-zinc-500 dark:text-zinc-300">
               FE Developer
