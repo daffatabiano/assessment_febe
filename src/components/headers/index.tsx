@@ -41,6 +41,8 @@ export default function Navbar() {
     return () => {};
   }, [scrollY]);
 
+  console.log(theme);
+
   return (
     <div
       className={`w-full md:h-24 h-16 flex sticky top-0 z-10 p-4  ${
@@ -49,7 +51,7 @@ export default function Navbar() {
       <div className="w-full px-2 flex justify-between items-center">
         <div className="w-full md:w-1/3 flex items-center">
           <img
-            src={'/logo.png'}
+            src={`${theme ? '/dark-logo.png' : '/logo.png'}`}
             alt="logo-navbar"
             className="md:w-16 md:h-16 w-10 h-10 object-cover"
           />
