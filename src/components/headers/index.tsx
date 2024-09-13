@@ -16,11 +16,14 @@ export default function Navbar() {
     if (typeof window !== 'undefined') {
       setTheme(window.localStorage.getItem('theme') || 'light');
     }
+  }, []);
+
+  useEffect(() => {
     if (theme) {
       setDarkMode(theme === 'dark');
-      document.body.classList.toggle('dark', theme === 'dark');
+      document.body.classList.add(theme);
     }
-  }, []);
+  }, [theme]);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -49,7 +52,7 @@ export default function Navbar() {
         scrollY ? 'bg-white dark:bg-zinc-800' : 'bg-transparent'
       }`}>
       <div className="w-full px-2 flex justify-between items-center">
-        <div className="w-full md:w-1/3 flex items-center">
+        <div className="w-full md:w-1/2 flex items-center">
           <img
             src={`${theme ? '/dark-logo.png' : '/logo.png'}`}
             alt="logo-navbar"
@@ -62,14 +65,14 @@ export default function Navbar() {
             </span>{' '}
           </h1>
         </div>
-        <div className="md:w-2/3 w-fit flex items-center justify-end ">
+        <div className="md:w-1/2 w-fit flex items-center justify-end ">
           <ul className="gap-4 hidden md:flex">
             {navLinks.map((item) => (
               <li
                 key={item.id}
-                className={` text-balance ${
+                className={` text-balance hover:text-zinc-900 dark:hover:text-zinc-100 hover:-translate-y-1 ${
                   item.path === asPath
-                    ? 'text-zinc-900 dark:text-zinc-100 font-bold'
+                    ? 'text-zinc-900 dark:text-zinc-100 font-bold -translate-y-1'
                     : 'text-zinc-700 dark:text-zinc-300 font-light'
                 }`}>
                 <Link href={item.path}>{item.title}</Link>
