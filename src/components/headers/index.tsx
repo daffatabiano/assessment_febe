@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { navLinks } from '@/constants';
-import { logo } from '../assets';
 
 export default function Navbar() {
   const [scrollY, setScrollY] = useState<boolean>(false);
@@ -25,31 +24,31 @@ export default function Navbar() {
 
   return (
     <div
-      className={`w-full h-24 flex fixed z-10 p-4 ${
+      className={`w-full md:h-24 h-16 flex sticky top-0 z-10 p-4  ${
         scrollY ? 'bg-white dark:bg-zinc-800' : 'bg-transparent'
       }`}>
-      <div className="w-full flex justify-between items-center">
-        <div className="w-1/3 flex items-center">
+      <div className="w-full px-2 flex justify-between items-center">
+        <div className="w-full md:w-1/3 flex items-center">
           <img
             src={'/logo.svg'}
             alt="logo-navbar"
-            className="w-20 h-20 object-cover"
+            className="md:w-20 md:h-20 w-10 h-10 object-cover"
           />
-          <h1 className="text-xl md:text-2xl font-bold text-zinc-700 dark:text-white">
+          <h1 className="text-md md:text-2xl flex w-full bg-rose-100 font-bold text-zinc-700 dark:text-white">
             Daffa Tabiano |{' '}
             <span className="text-zinc-500 dark:text-zinc-300">
               FE Developer
             </span>{' '}
           </h1>
         </div>
-        <div className="w-2/3 flex items-center justify-end ">
-          <ul className="flex gap-4">
+        <div className="md:w-2/3 w-fit flex items-center justify-end ">
+          <ul className="gap-4 hidden md:flex">
             {navLinks.map((item) => (
               <li
                 key={item.id}
                 className={` ${
                   item.path === asPath
-                    ? 'text-zinc-900 dark:text-zinc-100'
+                    ? 'text-zinc-900 dark:text-zinc-100 font-bold'
                     : 'text-zinc-700 dark:text-zinc-300'
                 }`}>
                 <Link href={item.path}>{item.title}</Link>
