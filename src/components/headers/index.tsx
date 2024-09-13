@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { navLinks } from '@/constants';
+import { FaRegMoon, FaRegSun } from 'react-icons/fa';
 
 export default function Navbar() {
   const [scrollY, setScrollY] = useState<boolean>(false);
@@ -46,10 +47,10 @@ export default function Navbar() {
             {navLinks.map((item) => (
               <li
                 key={item.id}
-                className={` ${
+                className={` text-balance ${
                   item.path === asPath
                     ? 'text-zinc-900 dark:text-zinc-100 font-bold'
-                    : 'text-zinc-700 dark:text-zinc-300'
+                    : 'text-zinc-700 dark:text-zinc-300 font-light'
                 }`}>
                 <Link href={item.path}>{item.title}</Link>
               </li>
@@ -61,6 +62,17 @@ export default function Navbar() {
             className="bg-transparent w-8 h-8 md:hidden text-xl">
             <GiHamburgerMenu />
           </button>
+
+          <label className="inline-flex items-center cursor-pointer ps-4">
+            <span className="me-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+              <FaRegSun />
+            </span>
+            <input type="checkbox" value="" className="sr-only peer" />
+            <div className="relative w-11 h-6 bg-yellow-200 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-zinc-300 dark:peer-focus:ring-zinc-100 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-zinc-600"></div>
+            <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+              <FaRegMoon />
+            </span>
+          </label>
         </div>
       </div>
     </div>
