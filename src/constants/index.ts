@@ -7,17 +7,17 @@ const navLinks: NavbarProps[] = [
   {
     id: 2,
     title: 'About',
-    path: '/about',
+    path: '#about',
   },
   {
     id: 3,
     title: 'Service',
-    path: '/service',
+    path: '#service',
   },
   {
     id: 4,
     title: 'Contact',
-    path: '/contact',
+    path: '#contact',
   },
 ];
 
