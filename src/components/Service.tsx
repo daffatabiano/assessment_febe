@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaFilter } from 'react-icons/fa';
+import Pagination from './ui/Pagination';
 
 const Service = ({
   data,
@@ -34,7 +35,7 @@ const Service = ({
         </button>
       </div>
       <div className="  m-2 mt-8">
-        <ul className="w-full flex justify-center items-center flex-col gap-4 md:gap-4">
+        <ul className="w-full flex justify-center items-center flex-col gap-4 mb-4 md:gap-4">
           {currentPosts?.map((item, i) => (
             <li
               key={i}
@@ -44,6 +45,11 @@ const Service = ({
             </li>
           ))}
         </ul>
+        <Pagination
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+          totalPages={totalPages}
+        />
       </div>
     </div>
   );
