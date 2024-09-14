@@ -35,7 +35,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const scrollY = window.scrollY;
-    if (scrollY > 100) {
+    if (scrollY > 0) {
       setScrollY(true);
     } else {
       setScrollY(false);
@@ -48,7 +48,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`w-full md:h-24 h-16 flex sticky top-0 z-10 p-4  ${
+      className={`w-full md:h-24 h-16 flex fixed top-0 z-10 p-4  ${
         scrollY ? 'bg-white dark:bg-zinc-800' : 'bg-transparent'
       }`}>
       <div className="w-full px-2 flex justify-between items-center">
