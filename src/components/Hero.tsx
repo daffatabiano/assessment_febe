@@ -26,10 +26,10 @@ const Hero = () => {
           />
         </div>
       </div>
-      <p className="text-center md:text-end text-zinc-950 dark:text-white font-extralight text-sm italic md:bottom-5 md:absolute md:right-5">
+      <p className="text-center md:text-end text-zinc-950 dark:text-white font-extralight text-sm italic md:bottom-5 md:absolute md:right-8">
         Designed by <span className="font-normal">Daffa Tabiano</span>
       </p>
-      <p className="hidden md:block md:text-start text-zinc-950 dark:text-white font-extralight text-sm italic mt-4 md:bottom-5 md:absolute md:left-5">
+      <p className="hidden md:block md:text-start text-zinc-950 dark:text-white font-extralight text-sm italic mt-4 md:bottom-5 md:absolute md:left-8">
         Rest API by <span className="font-normal">jsonplaceholder</span>
       </p>
     </div>
