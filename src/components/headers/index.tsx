@@ -82,11 +82,11 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMenu(!menu)}
-            className="bg-transparent w-8 h-8 md:hidden text-xl">
+            className="bg-transparent w-8 h-8 md:hidden text-xl dark:text-white">
             <GiHamburgerMenu />
           </button>
 
-          <label className="inline-flex items-center cursor-pointer ps-4">
+          <label className="md:inline-flex hidden items-center cursor-pointer ps-4">
             <span className="me-3 text-sm font-medium text-gray-900 dark:text-gray-300">
               <FaRegSun />
             </span>
