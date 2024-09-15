@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { navLinks } from '@/constants';
 import { FaRegMoon, FaRegSun } from 'react-icons/fa';
@@ -34,6 +34,19 @@ export default function Navbar() {
     document.body.classList.toggle('dark');
   };
 
+  const isCurrentPathActive = useCallback(
+    (item: { path: string | string[] } = { path: '' }) => {
+      const pathString = Array.isArray(item.path)
+        ? item.path.join('/')
+        : item.path;
+      return (
+        `${!pathString.includes('/') ? '/' + pathString : pathString}` ===
+        asPath
+      );
+    },
+    [asPath]
+  );
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -61,19 +74,12 @@ export default function Navbar() {
               <li key={item.id} className="w-full flex flex-col ">
                 <Link
                   className={`relative text-lg font-medium text-zinc-950 dark:text-white p-2 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 ${
-                    `${
-                      !item.path.includes('/') ? '/' + item.path : item.path
-                    }` === asPath
+                    isCurrentPathActive(item)
                       ? 'text-zinc-500 dark:text-zinc-300 bg-zinc-200 dark:bg-zinc-700 '
                       : ''
                   }`}
                   href={`${item.path}`}>
                   {item.title}
-                  {`${
-                    !item.path.includes('/') ? '/' + item.path : item.path
-                  }` === asPath && (
-                    <span className="absolute my-auto top-0 bottom-0 right-4 bg-zinc-500 dark:bg-zinc-300 h-2 w-2 rounded-full" />
-                  )}
                 </Link>
               </li>
             );
@@ -87,9 +93,10 @@ export default function Navbar() {
         <div className="w-full px-2 flex justify-between items-center">
           <div className="w-full md:w-1/2 flex items-center">
             <img
-              src={`${theme ? '/dark-logo.png' : '/logo.png'}`}
+              src={theme === 'dark' ? '/dark-logo.png' : '/logo.png'}
               alt="logo-navbar"
-              className="md:w-16 md:h-16 w-10 h-10 object-cover"
+              loading="lazy"
+              className=" md:w-16 md:h-16 w-10 h-10 object-cover"
             />
             <h1 className="text-sm  font-semibold ms-2 md:text-2xl flex w-fullfont-bold text-zinc-700 dark:text-white">
               Daffa Tabiano{' '}
@@ -104,9 +111,7 @@ export default function Navbar() {
                 <li
                   key={item.id}
                   className={` text-balance hover:text-zinc-900 dark:hover:text-zinc-100 hover:-translate-y-1 ${
-                    `${
-                      !item.path.includes('/') ? '/' + item.path : item.path
-                    }` === asPath
+                    isCurrentPathActive(item)
                       ? 'text-zinc-900 dark:text-zinc-100 font-bold -translate-y-1'
                       : 'text-zinc-700 dark:text-zinc-300 font-light'
                   }`}>
