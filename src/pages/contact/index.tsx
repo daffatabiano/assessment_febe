@@ -60,7 +60,7 @@ const Page = () => {
   return (
     <div className="w-full h-screen flex justify-center items-center flex-col mt-8">
       <Toaster />
-      <h1 className="text-5xl font-extrabold text-balance text-center text-zinc-300 dark:text-zinc-900">
+      <h1 className="text-3xl md:text-5xl font-extrabold text-balance text-center text-zinc-300 dark:text-zinc-900">
         Contact.
       </h1>
       <Form onSubmit={submitForm} />
