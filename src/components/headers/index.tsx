@@ -51,7 +51,11 @@ export default function Navbar() {
 
   return (
     <>
-      <Drawer setIsOpen={setMenu} isOpen={menu}>
+      <Drawer
+        setIsOpen={setMenu}
+        isOpen={menu}
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}>
         <ul className="w-full h-full flex flex-col items-center p-4 gap-4">
           {navLinks.map((item) => {
             return (
