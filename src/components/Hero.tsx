@@ -34,7 +34,7 @@ const Hero = () => {
           <img
             src="/next-js-dark.png"
             loading="lazy"
-            alt="company-logo"
+            alt="company-logo-dark"
             className="md:w-96 md:h-96 w-60 h-60 mb-4 md:mb-0 object-contain dark:block hidden"
           />
         </div>
