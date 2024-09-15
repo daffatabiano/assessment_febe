@@ -24,7 +24,7 @@ const navLinks: NavbarProps[] = [
 const generatePageNumbers: (
   currentPage: number,
   totalPages: number
-) => number[] = (currentPage, totalPages) => {
+) => (number | string)[] = (currentPage, totalPages) => {
   const pageNumbers: (number | string)[] = [];
   const maxPagesToShow = 5;
 
