@@ -79,7 +79,7 @@ const Pagination: React.FC<PaginationProps> = ({
                     : 'text-gray-900 dark:text-zinc-50 dark:ring-zinc-800 dark:hover:bg-zinc-800 ring-1 ring-inset ring-gray-300 hover:bg-gray-50'
                 } focus:z-20 focus:outline-offset-0`}
                 aria-current={page === currentPage ? 'page' : undefined}
-                onClick={() => onPageChange(page)}>
+                onClick={() => onPageChange(page as number)}>
                 {page}
               </button>
             ))}
