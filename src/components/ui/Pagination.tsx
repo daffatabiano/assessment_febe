@@ -22,7 +22,7 @@ const Pagination: React.FC<PaginationProps> = ({
       <div className="flex flex-1 justify-between sm:hidden">
         <button
           disabled={currentPage === 1}
-          aria-label="Previous page"
+          aria-label="Previous page mobile"
           onClick={() => onPageChange(currentPage - 1)}
           type="button"
           className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
@@ -30,7 +30,7 @@ const Pagination: React.FC<PaginationProps> = ({
         </button>
         <button
           type="button"
-          aria-label="Next page"
+          aria-label="Next page mobile"
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
           className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">

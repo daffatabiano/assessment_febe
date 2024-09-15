@@ -22,7 +22,9 @@ const Input = (props: formTypeProps) => {
 
 const Label = ({ text }: { text: string }) => {
   return (
-    <label className="text-lg text-zinc-800 dark:text-zinc-50 font-semibold">
+    <label
+      htmlFor={text}
+      className="text-lg capitalize text-zinc-800 dark:text-zinc-50 font-semibold">
       {text}
     </label>
   );
@@ -39,16 +41,16 @@ const Form = (props: formProps) => {
   return (
     <div className="w-[90%] md:w-1/3 sm:m-8 m-4 p-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 shadow-md dark:shadow-zinc-900">
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <Label text="Name" />
+        <Label text="name" />
         <Input type="text" placeholder="Input your name here" name="name" />
-        <Label text="Email" />
+        <Label text="email" />
         <Input type="email" placeholder="Input your email here" name="email" />
-        <Label text="Message" />
+        <Label text="message" />
         <textarea
           className="w-full h-32 p-2 rounded-xl text-zinc-950 dark:text-zinc-50 bg-zinc-200 dark:bg-zinc-700 focus:outline-none resize-none"
           placeholder="Input your message here"
           name="message"
-          aria-label="Input your message here"
+          aria-label="message"
         />
         <button
           role="button"
