@@ -4,9 +4,15 @@ import { IoArrowBackCircle } from 'react-icons/io5';
 import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import { links } from '@/constants';
+import { useCallback } from 'react';
 
 const Page = ({ post, comments }: detailProps) => {
   const { push } = useRouter();
+
+  const handleBack = useCallback(() => {
+    push('/#service');
+  }, []);
+
   return (
     <>
       <Head>
@@ -21,7 +27,9 @@ const Page = ({ post, comments }: detailProps) => {
             </h1>
             <button
               type="button"
-              onClick={() => push('/#service')}
+              aria-label="Go back to services"
+              role="button"
+              onClick={handleBack}
               className="text-3xl flex gap-1 text-zinc-800 items-center dark:text-zinc-50">
               <IoArrowBackCircle />{' '}
             </button>
@@ -33,6 +41,8 @@ const Page = ({ post, comments }: detailProps) => {
               Comments
             </h1>
             <div
+              role="region"
+              aria-label="Comments section"
               className={`flex flex-col gap-4 overflow-auto h-full mb-48 rounded-lg ${styles.scrollBar} dark:${styles.scrollBarDark}`}>
               {comments.map((comment) => (
                 <div
