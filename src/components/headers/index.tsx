@@ -88,7 +88,7 @@ export default function Navbar() {
               alt="logo-navbar"
               className="md:w-16 md:h-16 w-10 h-10 object-cover"
             />
-            <h1 className="text-md font-semibold ms-2 md:text-2xl flex w-fullfont-bold text-zinc-700 dark:text-white">
+            <h1 className="text-sm  font-semibold ms-2 md:text-2xl flex w-fullfont-bold text-zinc-700 dark:text-white">
               Daffa Tabiano{' '}
               <span className="ps-2 text-zinc-400 dark:text-zinc-300">
                 | FE Developer
