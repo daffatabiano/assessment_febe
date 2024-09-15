@@ -1,3 +1,4 @@
+import { generatePageNumbers } from '@/constants';
 import React from 'react';
 
 interface PaginationProps {
@@ -11,7 +12,7 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   onPageChange,
 }) => {
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  const pages = generatePageNumbers(currentPage, totalPages);
 
   return (
     <div className="flex items-center justify-between border-t border-gray-200 dark:border-zinc-800 bg-default dark:bg-[#0a0a0a] px-4 py-3 sm:px-6">
