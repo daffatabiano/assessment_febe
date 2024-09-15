@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FaArrowAltCircleRight, FaRegMoon, FaRegSun } from 'react-icons/fa';
 
 export default function Drawer({
@@ -8,6 +8,10 @@ export default function Drawer({
   darkMode,
   toggleDarkMode,
 }: DrawerTypeProps): JSX.Element {
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+  }, [setIsOpen]);
+
   return (
     <main
       className={
@@ -15,7 +19,10 @@ export default function Drawer({
         (isOpen
           ? ' transition-opacity opacity-100 duration-500 translate-x-0  '
           : ' transition-all delay-500 opacity-0 translate-x-full  ')
-      }>
+      }
+      aria-modal="true"
+      aria-labelledby="drawer-label"
+      role="dialog">
       <section
         className={
           ' w-screen max-w-lg right-0 absolute bg-white dark:bg-zinc-800 h-full shadow-xl delay-400 duration-500 ease-in-out transition-all transform  ' +
@@ -35,6 +42,7 @@ export default function Drawer({
                   value=""
                   checked={darkMode}
                   className="sr-only peer"
+                  aria-label="Toggle dark mode"
                 />
                 <div className="relative w-11 h-6 bg-zinc-100 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-zinc-300 dark:peer-focus:ring-zinc-100 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-zinc-600"></div>
                 <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -42,8 +50,9 @@ export default function Drawer({
                 </span>
               </label>
               <span
+                aria-label="Close drawer"
                 className="flex items-center opacity-50 cursor-pointer hover:opacity-100"
-                onClick={() => setIsOpen(false)}>
+                onClick={handleClose}>
                 <FaArrowAltCircleRight className="text-xl" />
               </span>
             </div>
@@ -57,9 +66,8 @@ export default function Drawer({
       </section>
       <section
         className=" w-screen h-full cursor-pointer "
-        onClick={() => {
-          setIsOpen(false);
-        }}></section>
+        aria-label="Close drawer"
+        onClick={handleClose}></section>
     </main>
   );
 }
