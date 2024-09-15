@@ -2,6 +2,7 @@ import { FormEventHandler, useCallback } from 'react';
 
 type formProps = {
   onSubmit: FormEventHandler<HTMLFormElement>;
+  loading: boolean;
 };
 
 const Input = (props: formTypeProps) => {
@@ -28,10 +29,13 @@ const Label = ({ text }: { text: string }) => {
 };
 
 const Form = (props: formProps) => {
-  const { onSubmit } = props;
-  const handleSubmit = useCallback(() => {
-    onSubmit;
-  }, [onSubmit]);
+  const { onSubmit, loading } = props;
+  const handleSubmit = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      onSubmit(event);
+    },
+    [onSubmit]
+  );
   return (
     <div className="w-[90%] md:w-1/3 sm:m-8 m-4 p-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 shadow-md dark:shadow-zinc-900">
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -47,10 +51,12 @@ const Form = (props: formProps) => {
           aria-label="Input your message here"
         />
         <button
+          role="button"
+          disabled={loading}
           type="submit"
           aria-label="Send message"
           className="w-full bg-zinc-950 text-white dark:text-zinc-950 text-lg mt-4 dark:bg-white p-2 rounded-xl">
-          Send
+          {loading ? 'Sending...' : 'Send'}
         </button>
       </form>
     </div>
