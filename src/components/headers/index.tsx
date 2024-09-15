@@ -48,7 +48,6 @@ export default function Navbar() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
   return (
     <>
       <Drawer
@@ -62,13 +61,17 @@ export default function Navbar() {
               <li key={item.id} className="w-full flex flex-col ">
                 <Link
                   className={`relative text-lg font-medium text-zinc-950 dark:text-white p-2 rounded-lg hover:bg-zinc-200 dark:hover:bg-zinc-700 ${
-                    asPath === item.path
+                    `${
+                      !item.path.includes('/') ? '/' + item.path : item.path
+                    }` === asPath
                       ? 'text-zinc-500 dark:text-zinc-300 bg-zinc-200 dark:bg-zinc-700 '
                       : ''
                   }`}
                   href={`${item.path}`}>
                   {item.title}
-                  {asPath === item.path && (
+                  {`${
+                    !item.path.includes('/') ? '/' + item.path : item.path
+                  }` === asPath && (
                     <span className="absolute my-auto top-0 bottom-0 right-4 bg-zinc-500 dark:bg-zinc-300 h-2 w-2 rounded-full" />
                   )}
                 </Link>
@@ -101,7 +104,9 @@ export default function Navbar() {
                 <li
                   key={item.id}
                   className={` text-balance hover:text-zinc-900 dark:hover:text-zinc-100 hover:-translate-y-1 ${
-                    item.path === asPath
+                    `${
+                      !item.path.includes('/') ? '/' + item.path : item.path
+                    }` === asPath
                       ? 'text-zinc-900 dark:text-zinc-100 font-bold -translate-y-1'
                       : 'text-zinc-700 dark:text-zinc-300 font-light'
                   }`}>
