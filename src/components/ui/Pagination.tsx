@@ -1,5 +1,5 @@
 import { generatePageNumbers } from '@/constants';
-import React from 'react';
+import React, { useMemo } from 'react';
 
 interface PaginationProps {
   currentPage: number;
@@ -12,13 +12,17 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   onPageChange,
 }) => {
-  const pages = generatePageNumbers(currentPage, totalPages);
+  const pages = useMemo(
+    () => generatePageNumbers(currentPage, totalPages),
+    [currentPage, totalPages]
+  );
 
   return (
     <div className="flex md:w-1/2 w-full items-center justify-between border-t border-gray-200 dark:border-zinc-800 bg-default dark:bg-[#0a0a0a] px-4 py-3 sm:px-6">
       <div className="flex flex-1 justify-between sm:hidden">
         <button
           disabled={currentPage === 1}
+          aria-label="Previous page"
           onClick={() => onPageChange(currentPage - 1)}
           type="button"
           className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
@@ -26,6 +30,7 @@ const Pagination: React.FC<PaginationProps> = ({
         </button>
         <button
           type="button"
+          aria-label="Next page"
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
           className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
@@ -48,6 +53,7 @@ const Pagination: React.FC<PaginationProps> = ({
             <button
               onClick={() => onPageChange(currentPage - 1)}
               type="button"
+              aria-label="Previous page"
               disabled={currentPage === 1}
               className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset dark:ring-zinc-800 ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
               <span className="sr-only">Previous</span>
@@ -79,6 +85,7 @@ const Pagination: React.FC<PaginationProps> = ({
             ))}
             <button
               type="button"
+              aria-label="Next page"
               onClick={() => onPageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
               className="relative inline-flex items-center rounded-r-md px-2 py-2 dark:ring-zinc-800 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
