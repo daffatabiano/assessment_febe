@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { FaFilter } from 'react-icons/fa';
 import Pagination from './ui/Pagination';
 import { useRouter } from 'next/navigation';
+import Dropdown from './ui/Dropdown';
 
 const Service = ({ data }: serviceProps) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [dropdown, setDropdown] = useState<boolean>(false);
   const postsPerPage = 5;
   const totalPages = Math.ceil(data?.length / postsPerPage);
   const { push } = useRouter();
@@ -20,12 +22,18 @@ const Service = ({ data }: serviceProps) => {
         <h1 className="text-3xl font-bold text-zinc-950 dark:text-white">
           Blog Service
         </h1>
-        <button className="bg-transparent rounded-full text-zinc-950 dark:text-white flex w-28   justify-center items-center py-2 border-2 border-zinc-950 dark:border-white">
-          <span className="mr-2">
-            <FaFilter />
-          </span>{' '}
-          Filter
-        </button>
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => setDropdown(!dropdown)}
+            className="bg-transparent rounded-full text-zinc-950 dark:text-white flex w-28   justify-center items-center py-2 border-2 border-zinc-950 dark:border-white">
+            <span className="mr-2">
+              <FaFilter />
+            </span>{' '}
+            Filter
+          </button>
+          <Dropdown open={dropdown} />
+        </div>
       </div>
       <div className="  m-2 mt-8">
         <ul className="w-full flex justify-center items-center flex-col gap-4 mb-4 md:gap-4">
@@ -40,7 +48,7 @@ const Service = ({ data }: serviceProps) => {
             </li>
           ))}
         </ul>
-        <div className="w-full flex justify-center items-center ">
+        <div className="w-full flex justify-center items-center pt-4">
           <Pagination
             currentPage={currentPage}
             onPageChange={setCurrentPage}
