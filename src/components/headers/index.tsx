@@ -77,7 +77,9 @@ export default function Navbar() {
                     ? 'text-zinc-900 dark:text-zinc-100 font-bold -translate-y-1'
                     : 'text-zinc-700 dark:text-zinc-300 font-light'
                 }`}>
-                <Link href={item.path}>{item.title}</Link>
+                <Link href={asPath === '/contact' ? '/' : item.path}>
+                  {item.title}
+                </Link>
               </li>
             ))}
           </ul>

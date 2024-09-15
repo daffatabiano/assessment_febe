@@ -17,11 +17,15 @@ const navLinks: NavbarProps[] = [
   {
     id: 4,
     title: 'Contact',
-    path: '#contact',
+    path: '/contact',
   },
 ];
 
-const generatePageNumbers = (currentPage: number, totalPages: number) => {
+const generatePageNumbers: (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  currentPage: any,
+  totalPages: number
+) => number[] = (currentPage, totalPages) => {
   const pageNumbers = [];
   const maxPagesToShow = 5;
 

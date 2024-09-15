@@ -1,20 +1,13 @@
 import { useState } from 'react';
 import { FaFilter } from 'react-icons/fa';
 import Pagination from './ui/Pagination';
+import { useRouter } from 'next/navigation';
 
-const Service = ({
-  data,
-}: {
-  data: {
-    id: number;
-    title: string;
-    body: string;
-    userId: number;
-  }[];
-}) => {
+const Service = ({ data }: serviceProps) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const postsPerPage = 5;
   const totalPages = Math.ceil(data?.length / postsPerPage);
+  const { push } = useRouter();
 
   const currentPosts = data.slice(
     (currentPage - 1) * postsPerPage,
@@ -39,6 +32,8 @@ const Service = ({
           {currentPosts?.map((item, i) => (
             <li
               key={i}
+              id={`post-${i}`}
+              onClick={() => push(`/posts/${item.id}`)}
               className="text-zinc-950 dark:text-white md:w-1/2 p-4 flex flex-col gap-2 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow-sm shadow-zinc-950 dark:shadow-white hover:transform hover:scale-105 md:hover:translate-x-6">
               <h1 className="font-bold text-lg capitalize">{item?.title}</h1>
               <p className="text-sm font-light">{item.body}</p>
