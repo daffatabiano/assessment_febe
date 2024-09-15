@@ -60,11 +60,11 @@ const Service = ({ data }: serviceProps) => {
             aria-controls="dropdown-menu"
             type="button"
             onClick={() => setDropdown(!dropdown)}
-            className="bg-transparent rounded-full text-zinc-950 dark:text-white flex w-28   justify-center items-center py-2 border-2 border-zinc-950 dark:border-white">
+            className="bg-transparent capitalize rounded-full text-zinc-950 dark:text-white flex w-28   justify-center items-center py-2 border-2 border-zinc-950 dark:border-white">
             <span className="mr-2">
               <FaFilter />
             </span>{' '}
-            Filter
+            {filter || 'filter'}
           </button>
           <Dropdown open={dropdown} filter={handleFilter} />
         </div>
