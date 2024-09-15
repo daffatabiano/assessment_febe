@@ -1,5 +1,7 @@
+import { FormEventHandler } from 'react';
+
 type formProps = {
-  onSubmit: () => void;
+  onSubmit: FormEventHandler<HTMLFormElement>;
 };
 
 const Input = (props: formTypeProps) => {
@@ -11,7 +13,7 @@ const Input = (props: formTypeProps) => {
         placeholder={placeholder}
         name={name}
         id={name}
-        className={`w-full px-4 py-2 rounded-xl bg-zinc-200 dark:bg-zinc-700 focus:outline-none ${className}`}
+        className={`w-full px-4 py-2 rounded-xl bg-zinc-200 dark:bg-zinc-700 text-zinc-950 dark:text-zinc-50 focus:outline-none ${className}`}
       />
     </>
   );
@@ -36,7 +38,7 @@ const Form = (props: formProps) => {
         <Input type="email" placeholder="Input your email here" name="email" />
         <Label text="Message" />
         <textarea
-          className="w-full h-32 p-2 rounded-xl bg-zinc-200 dark:bg-zinc-700 focus:outline-none resize-none"
+          className="w-full h-32 p-2 rounded-xl text-zinc-950 dark:text-zinc-50 bg-zinc-200 dark:bg-zinc-700 focus:outline-none resize-none"
           placeholder="Input your message here"
           name="message"
         />
