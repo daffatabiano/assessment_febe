@@ -54,4 +54,8 @@ const generatePageNumbers: (
   return pageNumbers;
 };
 
-export { navLinks, generatePageNumbers };
+const links = {
+  BASE_URL_API: process.env.NEXT_PUBLIC_BASE_URL_API,
+};
+
+export { navLinks, generatePageNumbers, links };

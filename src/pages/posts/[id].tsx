@@ -3,6 +3,7 @@ import styles from '@/pages/posts/detail.module.css';
 import { IoArrowBackCircle } from 'react-icons/io5';
 import { useRouter } from 'next/navigation';
 import Head from 'next/head';
+import { links } from '@/constants';
 
 const Page = ({ post, comments }: detailProps) => {
   const { push } = useRouter();
@@ -62,13 +63,9 @@ export async function getServerSideProps({
   params: { id: string };
 }) {
   const { id } = params;
-  const res = await axios.get(
-    `https://jsonplaceholder.typicode.com/posts/${id}`
-  );
+  const res = await axios.get(`${links.BASE_URL_API}/posts/${id}`);
   const data = res.data;
-  const resCom = await axios.get(
-    `https://jsonplaceholder.typicode.com/posts/${id}/comments`
-  );
+  const resCom = await axios.get(`${links.BASE_URL_API}/posts/${id}/comments`);
   const dataCom = resCom.data;
   return { props: { post: data, comments: dataCom } };
 }

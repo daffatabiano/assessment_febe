@@ -1,5 +1,6 @@
 import { Hero } from '@/components/Hero';
 import { Service } from '@/components/Service';
+import { links } from '@/constants';
 import axios from 'axios';
 import Head from 'next/head';
 
@@ -17,7 +18,7 @@ export default function Home({ data }: serviceProps) {
 }
 
 export async function getServerSideProps() {
-  const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
+  const res = await axios.get(`${links.BASE_URL_API}/posts`);
   const data = res.data;
   return { props: { data } };
 }
