@@ -1,7 +1,17 @@
 import { Form } from '@/components/ui/Form';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Page = () => {
+  const [theme, setTheme] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setTheme(window.localStorage.getItem('theme') || 'light');
+    }
+  }, []);
+
   const submitForm = async (e: {
     preventDefault: () => void;
     target: EventTarget;
@@ -13,15 +23,43 @@ const Page = () => {
       email: formData.get('email'),
       message: formData.get('message'),
     };
+    if (!data.name || !data.email || !data.message) {
+      toast(`All fields are required`, {
+        style: {
+          background: theme === 'dark' ? '#0a0a0a' : '#eeee',
+          color: theme === 'dark' ? 'white' : 'black',
+          border: '1px solid red',
+        },
+      });
+      return;
+    }
+
     const res = await axios.post(
       `https://jsonplaceholder.typicode.com/posts`,
       data
     );
-    console.log(res);
+    if (res.status === 201) {
+      toast(`Hello ${data?.name}, thank you for your message`, {
+        style: {
+          background: theme === 'dark' ? '#0a0a0a' : '#eeee',
+          color: theme === 'dark' ? 'white' : 'black',
+          border: '1px solid green',
+        },
+      });
+    } else {
+      toast(`Something went wrong`, {
+        style: {
+          background: theme === 'dark' ? '#0a0a0a' : '#eeee',
+          color: theme === 'dark' ? 'white' : 'black',
+          border: '1px solid red',
+        },
+      });
+    }
   };
 
   return (
     <div className="w-full h-screen flex justify-center items-center">
+      <Toaster />
       <Form onSubmit={submitForm} />
     </div>
   );
