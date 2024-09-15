@@ -1,0 +1,21 @@
+@mixin custom-scroll-bar($width, $height, $thumb-color, $track-color) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $height;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+  }
+}
+
+.scrollBar {
+  @include custom-scroll-bar(5px, 5px, #ccc, #eee);
+}
+
+.scrollBarDark {
+  @include custom-scroll-bar(5px, 5px, #eee, #ccc);
+}
