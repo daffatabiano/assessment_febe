@@ -25,10 +25,10 @@ export default function Drawer({
       role="dialog">
       <section
         className={
-          ' w-screen max-w-lg right-0 px-4 absolute bg-white dark:bg-zinc-800 h-full shadow-xl delay-400 duration-500 ease-in-out transition-all transform  ' +
+          ' w-screen max-w-lg right-0 absolute bg-white dark:bg-zinc-800 h-full shadow-xl delay-400 duration-500 ease-in-out transition-all transform  ' +
           (isOpen ? ' translate-x-0 ' : ' translate-x-full ')
         }>
-        <article className="relative w-screen max-w-lg pb-1 flex flex-col space-y-6 overflow-y-scroll h-full">
+        <article className="relative w-screen max-w-lg pb-1 flex flex-col space-y-6 h-full">
           <header className="p-4 font-bold text-lg flex justify-between text-zinc-800 dark:text-zinc-50">
             <img
               src="/logo.png"
