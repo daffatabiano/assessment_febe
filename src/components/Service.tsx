@@ -40,11 +40,13 @@ const Service = ({ data }: serviceProps) => {
             </li>
           ))}
         </ul>
-        <Pagination
-          currentPage={currentPage}
-          onPageChange={setCurrentPage}
-          totalPages={totalPages}
-        />
+        <div className="w-full flex justify-center items-center ">
+          <Pagination
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+            totalPages={totalPages}
+          />
+        </div>
       </div>
     </div>
   );
