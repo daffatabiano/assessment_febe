@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { IoOpenOutline } from 'react-icons/io5';
 
 const Hero = () => {
   const handleOpenWindow = useCallback(() => {
@@ -19,8 +20,8 @@ const Hero = () => {
             type="button"
             onClick={handleOpenWindow}
             aria-label="View Portfolio"
-            className="bg-dark dark:bg-default text-white dark:text-dark md:p-2 py-1 mt-8 md:mt-4 rounded-lg font-bold text-md md:w-1/2 w-full">
-            View Portfolio
+            className="bg-dark dark:bg-default flex justify-center items-center gap-4 text-white dark:text-dark md:p-2 py-1 mt-8 md:mt-4 rounded-lg font-bold text-md md:w-1/2 w-full">
+            <IoOpenOutline /> View Portfolio
           </button>
         </div>
         <div className="md:w-1/2  flex justify-center">
