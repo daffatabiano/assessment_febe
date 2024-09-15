@@ -15,7 +15,7 @@ const Pagination: React.FC<PaginationProps> = ({
   const pages = generatePageNumbers(currentPage, totalPages);
 
   return (
-    <div className="flex md:w-1/2 items-center justify-between border-t border-gray-200 dark:border-zinc-800 bg-default dark:bg-[#0a0a0a] px-4 py-3 sm:px-6">
+    <div className="flex md:w-1/2 w-full items-center justify-between border-t border-gray-200 dark:border-zinc-800 bg-default dark:bg-[#0a0a0a] px-4 py-3 sm:px-6">
       <div className="flex flex-1 justify-between sm:hidden">
         <button
           disabled={currentPage === 1}
@@ -34,9 +34,9 @@ const Pagination: React.FC<PaginationProps> = ({
       </div>
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm text-gray-700">
+          <p className="text-xs md:text-sm text-gray-700">
             Showing <span className="font-medium">{5} </span>
-            to <span className="font-bold">{currentPage} </span>
+            to <span className="font-extrabold">{currentPage} </span>
             of <span className="font-medium">{totalPages} </span>
             results
           </p>
