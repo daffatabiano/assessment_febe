@@ -20,7 +20,7 @@ const Page = ({ post, comments }: detailProps) => {
             </h1>
             <button
               type="button"
-              onClick={() => push('/')}
+              onClick={() => push('/#service')}
               className="text-3xl flex gap-1 text-zinc-800 items-center dark:text-zinc-50">
               <IoArrowBackCircle />{' '}
             </button>

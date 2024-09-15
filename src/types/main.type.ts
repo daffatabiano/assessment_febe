@@ -37,3 +37,9 @@ interface formTypeProps {
   className?: string;
   type?: string;
 }
+
+interface DrawerTypeProps {
+  children: React.ReactNode;
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
