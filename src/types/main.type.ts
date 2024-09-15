@@ -30,3 +30,10 @@ interface serviceProps {
 interface pageNumber {
   generatePageNumbers: (currentPage: number, totalPages: number) => number[];
 }
+
+interface formTypeProps {
+  placeholder?: string;
+  name: string;
+  className?: string;
+  type?: string;
+}
