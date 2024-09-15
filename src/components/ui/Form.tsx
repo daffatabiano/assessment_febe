@@ -30,7 +30,7 @@ const Label = ({ text }: { text: string }) => {
 const Form = (props: formProps) => {
   const { onSubmit } = props;
   return (
-    <div className="w-full md:w-1/3 sm:m-8 m-4 p-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 shadow-md dark:shadow-zinc-900">
+    <div className="w-[90%] md:w-1/3 sm:m-8 m-4 p-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 shadow-md dark:shadow-zinc-900">
       <form className="flex flex-col gap-4" onSubmit={onSubmit}>
         <Label text="Name" />
         <Input type="text" placeholder="Input your name here" name="name" />
