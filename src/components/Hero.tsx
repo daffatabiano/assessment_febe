@@ -1,4 +1,10 @@
+import { useCallback } from 'react';
+
 const Hero = () => {
+  const handleOpenWindow = useCallback(() => {
+    window.open('https://dafportabs.vercel.app/');
+  }, []);
+
   return (
     <div className="hero h-screen transition duration-300 dark:shadow-[inset_0_-34px_65px_40px_rgba(10,10,10,1)] shadow-[inset_0_-34px_65px_40px_rgba(255,255,255,1)] bg-[url('/light-bg.jpeg')] bg-cover bg-center dark:bg-[url('/dark-bg.jpeg')] bg-no-repeat relative">
       <div className=" h-full flex-col-reverse flex md:justify-between justify-center md:gap-8 items-center md:flex-row px-8">
@@ -11,7 +17,8 @@ const Hero = () => {
           </p>
           <button
             type="button"
-            onClick={() => window.open('https://dafportabs.vercel.app/')}
+            onClick={handleOpenWindow}
+            aria-label="View Portfolio"
             className="bg-dark dark:bg-default text-white dark:text-dark md:p-2 py-1 mt-8 md:mt-4 rounded-lg font-bold text-md md:w-1/2 w-full">
             View Portfolio
           </button>
@@ -20,12 +27,14 @@ const Hero = () => {
           <img
             src="/next-js.svg"
             alt="company-logo"
-            className="w-72 h-72 object-contain dark:hidden"
+            loading="lazy"
+            className="w-60 h-w-60 object-contain dark:hidden"
           />
           <img
             src="/next-js-dark.png"
+            loading="lazy"
             alt="company-logo"
-            className="md:w-96 md:h-96 w-72 h-72 mb-4 md:mb-0 object-contain dark:block hidden"
+            className="md:w-96 md:h-96 w-60 h-60 mb-4 md:mb-0 object-contain dark:block hidden"
           />
         </div>
       </div>
