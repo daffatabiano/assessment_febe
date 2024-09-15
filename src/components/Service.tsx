@@ -16,6 +16,10 @@ const Service = ({ data }: serviceProps) => {
     currentPage * postsPerPage
   );
 
+  const handleFilter = () => {
+    setDropdown(!dropdown);
+  };
+
   return (
     <div id="service" className="w-full flex-col flex px-8 pt-24">
       <div className="w-full flex justify-between">
@@ -32,7 +36,7 @@ const Service = ({ data }: serviceProps) => {
             </span>{' '}
             Filter
           </button>
-          <Dropdown open={dropdown} />
+          <Dropdown open={dropdown} filter={handleFilter} />
         </div>
       </div>
       <div className="  m-2 mt-8">
@@ -42,7 +46,7 @@ const Service = ({ data }: serviceProps) => {
               key={i}
               id={`post-${i}`}
               onClick={() => push(`/posts/${item.id}`)}
-              className="text-zinc-950 dark:text-white md:w-1/2 p-4 flex flex-col gap-2 rounded-lg bg-zinc-200 dark:bg-zinc-800 shadow-sm shadow-zinc-950 dark:shadow-white hover:transform hover:scale-105 md:hover:translate-x-6">
+              className="text-zinc-950 dark:text-white md:w-1/2 p-4 flex flex-col gap-2 rounded-lg bg-zinc-100 dark:bg-zinc-900 shadow-sm shadow-zinc-950 dark:shadow-white hover:transform hover:scale-105 md:hover:translate-x-6">
               <h1 className="font-bold text-lg capitalize">{item?.title}</h1>
               <p className="text-sm font-light">{item.body}</p>
             </li>
