@@ -22,11 +22,10 @@ const navLinks: NavbarProps[] = [
 ];
 
 const generatePageNumbers: (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  currentPage: any,
+  currentPage: number,
   totalPages: number
 ) => number[] = (currentPage, totalPages) => {
-  const pageNumbers = [];
+  const pageNumbers: (number | string)[] = [];
   const maxPagesToShow = 5;
 
   if (totalPages <= maxPagesToShow) {
