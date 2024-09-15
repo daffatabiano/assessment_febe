@@ -8,17 +8,44 @@ const Service = ({ data }: serviceProps) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [dropdown, setDropdown] = useState<boolean>(false);
   const postsPerPage = 5;
-  const totalPages = Math.ceil(data?.length / postsPerPage);
   const { push } = useRouter();
+  const [filter, setFilter] = useState<string>('');
 
-  const currentPosts = data.slice(
-    (currentPage - 1) * postsPerPage,
-    currentPage * postsPerPage
+  const isShort = useState<number>(
+    data.filter((item) => item.title.length <= 20).length
+  );
+  const isLong = useState<number>(
+    data.filter((item) => item.title.length > 20).length
   );
 
-  const handleFilter = useCallback(() => {
-    setDropdown((prev) => !prev);
-  }, [dropdown]);
+  const totalPages = Math.ceil(
+    filter
+      ? filter === 'short'
+        ? isShort[0] / postsPerPage
+        : isLong[0] / postsPerPage
+      : data?.length / postsPerPage
+  );
+
+  const currentPosts = filter
+    ? filter === 'short'
+      ? data
+          .filter((item) => item.title.length <= 20)
+          .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
+      : filter === 'long' &&
+        data
+          .filter((item) => item.title.length > 20)
+          .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
+    : data.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
+
+  data.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
+
+  const handleFilter = useCallback(
+    (e: string) => {
+      setDropdown((prev) => !prev);
+      setFilter(e);
+    },
+    [dropdown]
+  );
 
   return (
     <div id="service" className="w-full flex-col flex px-8 pt-24">

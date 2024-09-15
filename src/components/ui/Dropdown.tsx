@@ -10,10 +10,14 @@ export default function Dropdown({
   filter,
 }: {
   open: boolean;
-  filter: () => void;
+  filter: (filter: string) => void;
 }) {
-  const handleFilter = useCallback(() => {
-    filter();
+  const shortFilter = useCallback(() => {
+    filter('short');
+  }, [filter]);
+
+  const longFilter = useCallback(() => {
+    filter('long');
   }, [filter]);
 
   return (
@@ -30,7 +34,7 @@ export default function Dropdown({
         <li>
           <button
             type="button"
-            onClick={handleFilter}
+            onClick={shortFilter}
             className={styles.button}
             role="menuitem">
             Short Title
@@ -40,7 +44,7 @@ export default function Dropdown({
           <button
             aria-label="menuitem"
             type="button"
-            onClick={filter}
+            onClick={longFilter}
             className={styles.button}>
             Long Title
           </button>
@@ -50,7 +54,7 @@ export default function Dropdown({
           <button
             role="menuitem"
             type="button"
-            onClick={filter}
+            onClick={() => filter('')}
             className={styles.button}>
             Default
           </button>
