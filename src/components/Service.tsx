@@ -26,7 +26,7 @@ const Service = ({ data }: serviceProps) => {
       : data?.length / postsPerPage
   );
 
-  const currentPosts = filter
+  const currentPosts: any = filter
     ? filter === 'short'
       ? data
           .filter((item) => item.title.length <= 20)
@@ -71,18 +71,20 @@ const Service = ({ data }: serviceProps) => {
       </div>
       <div className="  m-2 mt-8">
         <ul className="w-full flex justify-center items-center flex-col gap-4 mb-4 md:gap-4">
-          {currentPosts?.map((item, i) => (
-            <li
-              key={i}
-              role="button"
-              id={`post-${i}`}
-              aria-label={`Post ${item?.title}`}
-              onClick={() => push(`/posts/${item.id}`)}
-              className="text-zinc-950 dark:text-white md:w-1/2 p-4 flex flex-col gap-2 rounded-lg bg-zinc-100 dark:bg-zinc-900 shadow-sm shadow-zinc-950 dark:shadow-white hover:transform hover:scale-105 md:hover:translate-x-6">
-              <h1 className="font-bold text-lg capitalize">{item?.title}</h1>
-              <p className="text-sm font-light">{item.body}</p>
-            </li>
-          ))}
+          {currentPosts?.map(
+            (item: { id: number; title: string; body: string }, i: number) => (
+              <li
+                key={i}
+                role="button"
+                id={`post-${i}`}
+                aria-label={`Post ${item?.title}`}
+                onClick={() => push(`/posts/${item.id}`)}
+                className="text-zinc-950 dark:text-white md:w-1/2 p-4 flex flex-col gap-2 rounded-lg bg-zinc-100 dark:bg-zinc-900 shadow-sm shadow-zinc-950 dark:shadow-white hover:transform hover:scale-105 md:hover:translate-x-6">
+                <h1 className="font-bold text-lg capitalize">{item?.title}</h1>
+                <p className="text-sm font-light">{item.body}</p>
+              </li>
+            )
+          )}
         </ul>
         <div className="w-full flex justify-center items-center pt-4">
           <Pagination
